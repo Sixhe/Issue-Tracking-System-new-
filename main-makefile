@@ -1,0 +1,26 @@
+//用这个makefile的时候需要把makefile的前缀删除
+all: run
+
+mainUI.o: mainUI.cpp mainUI.h
+	g++ -c -Wall mainUI.cpp
+
+FileHandler.o: FileHandler.cpp FileHandler.h
+	g++ -c -Wall FileHandler.cpp
+
+Customer.o: Customer.cpp Customer.h
+	g++ -c -Wall Customer.cpp
+
+Employee.o: Employee.cpp Employee.h
+	g++ -c -Wall Employee.cpp
+
+Engineer.o: Engineer.cpp Engineer.h
+	g++ -c -Wall Engineer.cpp
+
+main.o: main.cpp
+	g++ -c -Wall main.cpp
+
+run: main.o mainUI.o FileHandler.o Customer.o  Employee.o Engineer.o
+	g++ -o run -Wall main.o mainUI.o FileHandler.o Customer.o Employee.o Engineer.o
+
+clean:
+	rm -f run *.o
